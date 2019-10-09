@@ -1,7 +1,9 @@
-# Generated Data
 English syllables are identified with their IPA.
 
+# Generated Results
+
 The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.json)
+
 ```
 {'aback': [['a', 'ə'], ['back', 'bæk']],
  'abandon': [['a', 'ə'], ['ban', 'bæn'], ['don', 'dn̩']],
@@ -14,9 +16,9 @@ The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.js
  'abiding': [['a', 'ə'], ['bi', 'bɑɪ'], ['ding', 'dɪŋ']],
  'ability': [['a', 'ə'], ['bi', 'bɪ'], ['li', 'lə'], ['ty', 'ti']],
  'abiotic': [['a', 'ei'], ['bi', 'bɑɪ'], ['o', 'ɑ'], ['tic', 'ɾɪk']],
- 'ablaze': [['a', 'əb'], ['blaze', 'leiz']],
+ 'ablaze': [['ab', 'əb'], ['laze', 'leiz']],
  'able': [['a', 'ei'], ['ble', 'bl̩']],
- 'ably': [['a', 'eib'], ['bly', 'li']],
+ 'ably': [['ab', 'eib'], ['ly', 'li']],
  'aboard': [['a', 'ə'], ['board', 'bɔɹd']],
  'abode': [['a', 'ə'], ['bode', 'boʊd']],
  'abolish': [['a', 'ə'], ['bo', 'bɑ'], ['lish', 'lɪʃ']],
@@ -36,3 +38,7 @@ The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.js
 
 }
 ```  
+
+# Note
+
+The results are good enough, but certainly contain errors and ellipsis.

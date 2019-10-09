@@ -35,20 +35,46 @@ all_chars: Set[str] = set()
 
 CONSONANT_PHONEMES = {'w', 'v', 'p', 'ɾ', 'b', 'n', 'j', 'm', 'k', 'd', 's', 'ʒ', 'l', 'z', 'g', 'ɹ', 'f', 'h', 'ð',
                       'ʃ', 't'}
-CONSONANT_LETTERS = {'w', 'v', 'p', 't', 'b', 'n', 'j', 'm', 'k', 'd', 's', 'j', 'l', 'z', 'g', 'r', 'f', 'h', 'c', 'q'}
+CONSONANT_LETTERS = {'w', 'v', 'p', 't', 'b', 'n', 'j', 'm', 'k', 'd', 's', 'j', 'l', 'z', 'g', 'r', 'f', 'h', 'c', 'q',
+                     'x', 'y'}
+VOWEL_LETTERS = {'a', 'e', 'i', 'o', 'u'}
 
 
-def fix_trailing_consonants(correspondence: List[List[str]]):
+def fix_missing_trailing_consonants(correspondence: List[List[str]]):
     """
-    25k file tend to have trailing consonant letters
+    25k file sometimes have missing trailing consonant letters
+    ablaze: ['a', 'blaze']
+    where b is classified to the first syllable in ISLE
+
+    This function aims to fix that
+
+    >>> fix_missing_trailing_consonants([['a', 'əb'], ['blaze', 'leiz']])
+    [['ab', 'əb'], ['laze', 'leiz']]
+    >>> fix_missing_trailing_consonants([['a', 'eib'], ['bly', 'li']])
+    [['ab', 'eib'], ['ly', 'li']]
+    """
+    for i, (morpheme, ipa) in enumerate(correspondence[:-1]):
+        if morpheme:
+            if morpheme[-1] in VOWEL_LETTERS and ipa[-1] in CONSONANT_PHONEMES:
+
+                if len(correspondence[i + 1][0]) > 0:
+                    if (ipa[-1], correspondence[i + 1][0][0]) in {('t', 't'), ('b', 'b'), ('d', 'd'), ('p', 'p')}:
+                        correspondence[i][0] += correspondence[i + 1][0][0]
+                        correspondence[i + 1][0] = correspondence[i + 1][0][1:]
+    return correspondence
+
+
+def fix_extra_trailing_consonants(correspondence: List[List[str]]):
+    """
+    25k file sometimes have extra trailing consonant letters
     abated: ['a', 'bat', 'ed']
     where t is classified to the last syllable in ISLE
 
     This function aims to fix that
 
-    >>> fix_trailing_consonants([['a', 'ə'], ['bat', 'bei'], ['ed', 'tɪd']])
+    >>> fix_extra_trailing_consonants([['a', 'ə'], ['bat', 'bei'], ['ed', 'tɪd']])
     [['a', 'ə'], ['ba', 'bei'], ['ted', 'tɪd']]
-    >>> fix_trailing_consonants([['rock', 'ɹɑ'], ['et', 'kət']])
+    >>> fix_extra_trailing_consonants([['rock', 'ɹɑ'], ['et', 'kət']])
     [['ro', 'ɹɑ'], ['cket', 'kət']]
 
     """
@@ -91,7 +117,8 @@ if __name__ == '__main__':
                     new_syllable += new_part
 
                 correspondence[word].append([word_morphemes[i], new_syllable])
-                fix_trailing_consonants(correspondence[word])
+                fix_extra_trailing_consonants(correspondence[word])
+                fix_missing_trailing_consonants(correspondence[word])
     with open('word_to_ipa_with_syllables.json', 'w') as file:
         json.dump(correspondence, file)
     print(correspondence['zoo'])
