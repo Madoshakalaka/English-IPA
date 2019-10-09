@@ -1,6 +1,7 @@
 import json
 from collections import defaultdict
 from pathlib import Path
+from pprint import pprint
 from typing import List, Optional, Dict, Tuple, Set
 
 from pysle.isletool import LexicalTool, WordNotInISLE
@@ -47,5 +48,6 @@ for line in tqdm(lines):
 with open('word_to_ipa_with_syllables.json', 'w') as file:
     json.dump(correspondence, file)
 print(correspondence['zoo'])
-
 print(failed / total)
+
+pprint(dict(list(correspondence.items())[:20]))
