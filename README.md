@@ -42,3 +42,7 @@ The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.js
 # Note
 
 The results are good enough, but certainly contain errors and ellipsis.
+
+## Todo
+
+Use machine learning to generate IPA for off-list words
