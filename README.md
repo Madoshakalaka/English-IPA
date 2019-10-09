@@ -5,7 +5,8 @@ English syllables are identified with their IPA.
 The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.json)
 
 ```
-{'aback': [['a', 'ə'], ['back', 'bæk']],
+{'a': [['a', 'ei']],
+ 'aback': [['a', 'ə'], ['back', 'bæk']],
  'abandon': [['a', 'ə'], ['ban', 'bæn'], ['don', 'dn̩']],
  'abandoned': [['a', 'ə'], ['ban', 'bæn'], ['doned', 'dn̩d']],
  'abandonment': [['a', 'ə'], ['ban', 'bæn'], ['don', 'dn̩'], ['ment', 'mn̩t']],
@@ -31,8 +32,7 @@ The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.js
                  ['bo', 'bɑ'],
                  ['mi', 'mə'],
                  ['na', 'nei'],
-                 ['tion', 'ʃn̩']],
- 'abortion': [['a', 'ə'], ['bor', 'bɑɹ'], ['tion', 'ʃn̩']]
+                 ['tion', 'ʃn̩']]
 
 ...
 
