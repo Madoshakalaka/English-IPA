@@ -1,8 +1,8 @@
 # Generated Data
 English syllables are identified with their IPA.
 
-See [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.json)
-```.json
+The content of [word_to_ipa_with_syllables.json](./word_to_ipa_with_syllables.json)
+```
 {'aback': [('a', 'ə'), ('back', 'bæk')],
  'abandon': [('a', 'ə'), ('ban', 'bæn'), ('don', 'dn̩')],
  'abandoned': [('a', 'ə'), ('ban', 'bæn'), ('doned', 'dn̩d')],
